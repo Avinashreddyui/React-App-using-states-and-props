@@ -13,9 +13,9 @@
  *    must change the Default values in GreeterMessage component
  *    using states and props*/
 var GreeterMessage = React.createClass({
-    render: function (){
+    render: function (){//this component initialize the default values 
     var name =this.props.name;
-    var message = this.props.message;
+    var message = this.props.message;//this props function uses the default values in Greeter component and displays.
         return(
    <div>
        <h1>Here your name displays:</h1><h4>Hello{name}!</h4>
@@ -25,20 +25,20 @@ var GreeterMessage = React.createClass({
     }
 });
 var GreeterForm = React.createClass({
-    onFormSubmit: function (e) {
+    onFormSubmit: function (e) {//this function handles the button click to set values 
         e.preventDefault();
         var message = this.refs.message.value;
         var name= this.refs.name.value;
-        var updates={};
+        var updates={};//new obj that is created to send values to change states 
         if(name.length > 0){
             this.refs.name.value= '';
-            updates.name=name;
+            updates.name=name;//adding properties and values to obj
         }
         if(message.length>0){
             this.refs.message.value='';
             updates.message=message;
         }
-        this.props.onNewName(updates);
+        this.props.onNewName(updates);//this line of code send update obj to change state
     },
    render:function () {
        return(
@@ -56,7 +56,7 @@ var GreeterForm = React.createClass({
    }
 });
 var Greeter = React.createClass({
-    getDefaultProps:function () {
+    getDefaultProps:function () {//this function displays the default props
       return{
           name:'React',
           message:'hey i am here'
@@ -69,7 +69,7 @@ var Greeter = React.createClass({
       };
     },
     handleNewName: function (updates) {
-        this.setState(updates);
+        this.setState(updates);// this is the set state function which helps to set the state after button clicked
     },
     render: function () {
         var name= this.state.name;
